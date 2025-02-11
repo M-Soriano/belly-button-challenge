@@ -6,11 +6,11 @@ function buildMetadata(sample) {
     let metadata=data.metadata;
 
     // Filter the metadata for the object with the desired sample number
-    let sample_number = metadata.filter(meta => meta.id == sample);
+    let meta_sample = metadata.filter(meta => meta.id == sample);
 
     // Use d3 to select the panel with id of `#sample-metadata`
 
-    let sample_class =d3.select('#sample-metadata');
+    let panel_info =d3.select('#sample-metadata');
 
     // Use `.html("") to clear any existing metadata
 
@@ -19,7 +19,7 @@ function buildMetadata(sample) {
     // Inside a loop, you will need to use d3 to append new
     // tags for each key-value in the filtered metadata.
     //Understanding Object.entries : https://www.geeksforgeeks.org/javascript-object-entries-method/
-    Object.entries(sample_class).forEach(([key,value ]) => { 
+    Object.entries(meta_sample).forEach(([key,value ]) => { 
       panel_info.append("kv").text(`${key}:${value}`);
     });
 
@@ -32,8 +32,11 @@ function buildCharts(sample) {
 
     // Get the samples field
 
+    let samples= data.sample;
 
     // Filter the samples for the object with the desired sample number
+
+    letsa
 
 
     // Get the otu_ids, otu_labels, and sample_values
