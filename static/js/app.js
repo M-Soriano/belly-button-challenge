@@ -32,20 +32,34 @@ function buildCharts(sample) {
 
     // Get the samples field
 
-    let samples= data.sample;
+    let samples= data.samples;
 
     // Filter the samples for the object with the desired sample number
 
-    letsa
-
+    let samples_array=samples.filter(samp => samp.id == sample);
 
     // Get the otu_ids, otu_labels, and sample_values
 
+    let ids= samples_array.otu_ids;
+    let labels=samples_array.otu_labels;
+    let values=samples_array.sample_values;
 
     // Build a Bubble Chart
-
+    let bubble_chart ={
+      x:ids,
+      y:values,
+      mode: 'marker',
+      marker:{ size:values, color:ids}
+    }
+    let bubble_layout={
+      title: 'Bacteria Cultures Per Sample',
+      xaxis: 'OTU ID '+samp.id,
+      yaxis: 'Number of Bacteria'
+    }
 
     // Render the Bubble Chart
+
+    Plotly.newPlot('bubble',[bubble_chart],bubble_layout)
 
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
