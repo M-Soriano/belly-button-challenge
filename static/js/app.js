@@ -6,7 +6,7 @@ function buildMetadata(sample) {
     let metadata=data.metadata;
 
     // Filter the metadata for the object with the desired sample number
-    let meta_sample = metadata.filter(meta => meta.id == sample);
+    let meta_sample = metadata.find(meta => meta.id == sample);
 
     // Use d3 to select the panel with id of `#sample-metadata`
 
@@ -36,25 +36,27 @@ function buildCharts(sample) {
 
     // Filter the samples for the object with the desired sample number
 
-    let samples_array=samples.filter(samp => samp.id == sample);
+    let samples_array=samples.find(samp => samp.id == sample);
 
     // Get the otu_ids, otu_labels, and sample_values
 
     let ids= samples_array.otu_ids;
     let labels=samples_array.otu_labels;
     let values=samples_array.sample_values;
+    console.log(ids);
 
     // Build a Bubble Chart
     let bubble_chart ={
       x:ids,
       y:values,
+      text:labels,
       mode: 'marker',
       marker:{ size:values, color:ids}
     };
     let bubble_layout={
       title: 'Bacteria Cultures Per Sample',
-      xaxis: 'OTU ID '+samp.id,
-      yaxis: 'Number of Bacteria',
+      //xaxis: 'OTU ID '+samp.id,
+      //yaxis: 'Number of Bacteria',
       height:600,
       height:1200
 
@@ -69,7 +71,7 @@ function buildCharts(sample) {
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
 
-    let yticks= ids.slice(0,10).map(id => 'OTU '+id).reverse();
+    let yticks= ids.slice(0, 10).map(id => `OTU ${id}`).reverse();
 
 
     // Build a Bar Chart
@@ -83,7 +85,7 @@ function buildCharts(sample) {
     };
     let bar_layout={
       title: 'Top 10 Bacteria Cultures Found',
-      xaxis: 'Number of Bacteria'
+      //xaxis: 'Number of Bacteria'
     };
 
     // Render the Bar Chart
