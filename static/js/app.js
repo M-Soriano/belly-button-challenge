@@ -45,7 +45,7 @@ function buildCharts(sample) {
     let ids= samples_array.otu_ids;
     let labels=samples_array.otu_labels;
     let values=samples_array.sample_values;
-    console.log(samples_array);
+    
 
     // Build a Bubble Chart
     let bubble_chart ={
