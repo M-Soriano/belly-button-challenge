@@ -43,15 +43,16 @@ function buildCharts(sample) {
     let ids= samples_array.otu_ids;
     let labels=samples_array.otu_labels;
     let values=samples_array.sample_values;
-    console.log(ids);
+    
 
     // Build a Bubble Chart
     let bubble_chart ={
       x:ids,
       y:values,
       text:labels,
-      mode: 'marker',
-      marker:{ size:values, color:ids}
+      mode: 'markers',
+      marker:{ size:values,
+         color:ids}
     };
     let bubble_layout={
       title: 'Bacteria Cultures Per Sample',
@@ -102,7 +103,7 @@ function init() {
     let names= data.names;
 
     // Use d3 to select the dropdown with id of `#selDataset`
-    let dropdown=d3.select('#selDataset')
+    let dropdown=d3.select('#selDataset');
 
     // Use the list of sample names to populate the select options
     // Hint: Inside a loop, you will need to use d3 to append a new
