@@ -6,7 +6,8 @@ function buildMetadata(sample) {
     let metadata=data.metadata;
 
     // Filter the metadata for the object with the desired sample number
-    let meta_sample = metadata.find(meta => meta.id == sample);
+    let meta_sample = metadata.filter(meta => { return meta.id == sample;})[0];
+    
 
     // Use d3 to select the panel with id of `#sample-metadata`
 
@@ -20,7 +21,7 @@ function buildMetadata(sample) {
     // tags for each key-value in the filtered metadata.
     //Understanding Object.entries : https://www.geeksforgeeks.org/javascript-object-entries-method/
     Object.entries(meta_sample).forEach(([key,value ]) => { 
-      panel_info.append("kv").text(`${key}:${value}`);
+      panel_info.append("h6").text(`${key}:${value}`);
     });
 
   });
@@ -36,14 +37,15 @@ function buildCharts(sample) {
 
     // Filter the samples for the object with the desired sample number
 
-    let samples_array=samples.find(samp => samp.id == sample);
+    let samples_array=samples.filter(samp => {return samp.id == sample;})[0];
+    
 
     // Get the otu_ids, otu_labels, and sample_values
 
     let ids= samples_array.otu_ids;
     let labels=samples_array.otu_labels;
     let values=samples_array.sample_values;
-    
+    console.log(samples_array);
 
     // Build a Bubble Chart
     let bubble_chart ={
@@ -51,14 +53,14 @@ function buildCharts(sample) {
       y:values,
       text:labels,
       mode: 'markers',
-      marker:{ size:values,
-         color:ids}
+      marker:{ 
+        size:values,
+        color:ids,
+        colorscale:"Earth"}
     };
     let bubble_layout={
-      title: 'Bacteria Cultures Per Sample',
-      //xaxis: 'OTU ID '+samp.id,
-      //yaxis: 'Number of Bacteria',
-      
+      title: 'Bacteria Cultures Per Sample',  
+      xaxis:{title:'OTU ID'}  
 
     };
 
@@ -85,7 +87,7 @@ function buildCharts(sample) {
     };
     let bar_layout={
       title: 'Top 10 Bacteria Cultures Found',
-      //xaxis: 'Number of Bacteria'
+      xaxis:{title:'Number of Bacteria'},
     };
 
     // Render the Bar Chart
