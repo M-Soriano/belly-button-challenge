@@ -58,8 +58,7 @@ function buildCharts(sample) {
       title: 'Bacteria Cultures Per Sample',
       //xaxis: 'OTU ID '+samp.id,
       //yaxis: 'Number of Bacteria',
-      height:600,
-      height:1200
+      
 
     };
 
