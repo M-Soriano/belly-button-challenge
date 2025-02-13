@@ -89,7 +89,6 @@ function buildCharts(sample) {
 
     let yticks= ids10.slice(0, 10).map(id => `OTU ${id}`).reverse();
 
-
     // Build a Bar Chart
     // Don't forget to slice and reverse the input data appropriately
     let bar_chart={
