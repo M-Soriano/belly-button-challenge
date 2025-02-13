@@ -28,6 +28,7 @@
     ![dropdown meny](<static/README_Resources/dropdown_menu.png>)
 
     - Sample's metadata display.
+
     ![metadata display](static/README_Resources/metadata_display.png)
     
     - Horizontal bar chart displaying the top 10 OTUs from sample selected in dropdown menu.
@@ -43,6 +44,7 @@
         - x axis values: otu_ids
         - y axis values: sample_values
         - marker size value: sample_values
+        
             ![hover text over bubble](static/README_Resources/hoverover_bubble.png)
             - Hovertext: otu_labels
 
