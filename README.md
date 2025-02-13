@@ -19,18 +19,25 @@
 
 
  ---
+ ---
   ### Building a web site with interactive dashboard
 
-  - Layout
+  * Layout
+ 
+
+    ---
     - Dropdown menu.
     
     ![dropdown list](static/README_Resources/dropdown_menu_list.png)
     ![dropdown meny](<static/README_Resources/dropdown_menu.png>)
 
+
+    ---
     - Sample's metadata display.
 
     ![metadata display](static/README_Resources/metadata_display.png)
     
+    ---
     - Horizontal bar chart displaying the top 10 OTUs from sample selected in dropdown menu.
     ![bar chart](static/README_Resources/bar_chart.png)
         - Values for bar chart: sample_values
@@ -39,15 +46,17 @@
              ![hovertext](static/README_Resources/hovertext.png)
              - Hovertext: otu_labels
 
+    ---
     - Bubble chart displaying each sample
     ![bubble chart](static/README_Resources/bubble_chart.png)
         - x axis values: otu_ids
         - y axis values: sample_values
         - marker size value: sample_values
-        
+
             ![hover text over bubble](static/README_Resources/hoverover_bubble.png)
             - Hovertext: otu_labels
-
+----
+---
 website: [HERE]
 ![website page](static/README_Resources/homepage.png)
 
