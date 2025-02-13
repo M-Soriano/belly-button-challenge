@@ -8,7 +8,6 @@ function buildMetadata(sample) {
     // Filter the metadata for the object with the desired sample number
     let meta_sample = metadata.filter(meta => { return meta.id == sample;})[0];
     
-
     // Use d3 to select the panel with id of `#sample-metadata`
 
     let panel_info =d3.select('#sample-metadata');
@@ -38,8 +37,6 @@ function buildCharts(sample) {
     // Filter the samples for the object with the desired sample number
 
     let samples_array=samples.filter(samp => {return samp.id == sample;})[0];
- 
-    
 
     // Get the otu_ids, otu_labels, and sample_values
 
