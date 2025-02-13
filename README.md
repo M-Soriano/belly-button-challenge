@@ -36,15 +36,16 @@
     - Sample's metadata display.
 
     ![metadata display](static/README_Resources/metadata_display.png)
-    
     ---
     - Horizontal bar chart displaying the top 10 OTUs from sample selected in dropdown menu.
     ![bar chart](static/README_Resources/bar_chart.png)
         - Values for bar chart: sample_values
+
         - Label for the bar chart: otu_ids
 
-             ![hovertext](static/README_Resources/hovertext.png)
-             - Hovertext: otu_labels
+        - ![hovertext](static/README_Resources/hovertext.png)
+
+            - Hovertext: otu_labels
 
     ---
     - Bubble chart displaying each sample
