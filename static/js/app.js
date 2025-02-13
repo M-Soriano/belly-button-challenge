@@ -38,6 +38,7 @@ function buildCharts(sample) {
     // Filter the samples for the object with the desired sample number
 
     let samples_array=samples.filter(samp => {return samp.id == sample;})[0];
+ 
     
 
     // Get the otu_ids, otu_labels, and sample_values
@@ -45,8 +46,7 @@ function buildCharts(sample) {
     let ids= samples_array.otu_ids;
     let labels=samples_array.otu_labels;
     let values=samples_array.sample_values;
-    
-
+  
     // Build a Bubble Chart
     let bubble_chart ={
       x:ids,
@@ -68,20 +68,37 @@ function buildCharts(sample) {
 
     Plotly.newPlot('bubble',[bubble_chart],bubble_layout);
 
-    //sorting the top 10.
+    //sorting the top 10
+    //Adding index to sort later.
+     let indexdata= ids.map((ids,index)=>({
+      ids,
+      values: values[index],
+      labels:labels[index]
+     }));
+     //sorting descending.
+     indexdata.sort((a,b) => b.values - a.values);
+    
+     //slicing top 10 in list of object.
+     let slice_data=indexdata.slice(0,10);
+     
+     //Preparing new variables
+     let ids10= slice_data.map(id => id.ids);
+     let values10= slice_data.map(id => id.values);
+     let labels10= slice_data.map(id => id.labels);
+      
 
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
 
-    let yticks= ids.slice(0, 10).map(id => `OTU ${id}`).reverse();
+    let yticks= ids10.slice(0, 10).map(id => `OTU ${id}`).reverse();
 
 
     // Build a Bar Chart
     // Don't forget to slice and reverse the input data appropriately
     let bar_chart={
-      x: values.slice(0,10).reverse(),
+      x: values10.slice(0,10).reverse(),
       y:yticks,
-      text: labels.slice(0.10).reverse(),
+      text: labels10.slice(0.10).reverse(),
       type:'bar',
       orientation:'h'//horizontal 
     };
